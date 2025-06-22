@@ -1,0 +1,12 @@
+specVersion: "v1"
+serviceId: "p2p-chat"
+location: "us-central1"
+schema:
+  source: "./schema"
+  datasource:
+    postgresql:
+      database: "fdcdb"
+      cloudSql:
+        instanceId: "p2p-chat-fdc"
+      # schemaValidation: "COMPATIBLE"
+connectorDirs: ["./connector"]
