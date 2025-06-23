@@ -26,7 +26,7 @@ import ChatList from "./chatlist";
 import UserSearch from "./UserSearch";
 
 export default function Dashboard({ user }) {
-  // State management
+  
   const [searchTerm, setSearchTerm] = useState("");
   const [debouncedTerm, setDebouncedTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
@@ -39,16 +39,11 @@ export default function Dashboard({ user }) {
   const [messageToDelete, setMessageToDelete] = useState(null);
   const chatRef = useRef();
   
-
-  // Get chat ID from user IDs
   const getChatId = () => {
     if (!user?.uid || !selectedUser?.uid) return null;
     return [user.uid, selectedUser.uid].sort().join("_");
   };
 
-
-
-  // Debounce search input
   useEffect(() => {
     const timer = setTimeout(() => setDebouncedTerm(searchTerm), 300);
     return () => clearTimeout(timer);
@@ -97,12 +92,11 @@ export default function Dashboard({ user }) {
     return () => off(messagesRef, "child_added", unsubscribe);
   }, [selectedUser?.uid]);
 
-  // Auto-scroll to bottom of chat
+  
   useEffect(() => {
     chatRef.current?.scrollTo(0, chatRef.current.scrollHeight);
   }, [messages]);
 
-  // Send message handler
   const sendMessage = async () => {
     const chatId = getChatId();
     if (!chatId || (!newMessage.trim() && !file)) return;
@@ -115,8 +109,7 @@ export default function Dashboard({ user }) {
         timestamp: Date.now(),
         senderName: user.petName || user.displayName,
       };
-
-      // Add text if present
+      
       if (newMessage.trim()) {
         message.text = newMessage.trim();
       }
@@ -139,10 +132,10 @@ export default function Dashboard({ user }) {
         };
       }
 
-      // Push message to database
+      
       await push(ref(db, `chats/${chatId}/messages`), message);
 
-      // Reset form
+      
       setNewMessage("");
       setFile(null);
       document.getElementById("file-input").value = "";
@@ -155,7 +148,6 @@ export default function Dashboard({ user }) {
     }
   };
 
-  // Delete message handler
   const deleteMessage = async (messageId, hasFile) => {
     const chatId = getChatId();
     if (!chatId || !messageId) return;
