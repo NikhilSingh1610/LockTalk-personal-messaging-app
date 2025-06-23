@@ -6,13 +6,13 @@ import { getStorage } from "firebase/storage";
 
 // ✅ Your Firebase config
 const firebaseConfig = {
-  apiKey: "AIzaSyDKiPaZCAnL6aPFNhw1IEMTXKdh9ObE7Vc",
-  authDomain: "pema-a9828.firebaseapp.com",
-  databaseURL: "https://pema-a9828-default-rtdb.firebaseio.com",
-  projectId: "pema-a9828",
+  apiKey: "Your firebase api",
+  authDomain: "Domian",
+  databaseURL: "urlm",
+  projectId: "id",
   storageBucket: "pema-a9828.appspot.com",
-  messagingSenderId: "135048530996",
-  appId: "1:135048530996:web:5aa583cdea60648ad18e61"
+  messagingSenderId: "id",
+  appId: "id"
 };
 
 // ✅ Initialize the app first
