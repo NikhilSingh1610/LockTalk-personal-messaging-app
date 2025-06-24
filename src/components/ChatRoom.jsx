@@ -15,7 +15,6 @@ function ChatInterface({ user }) {
     return uid1 < uid2 ? `${uid1}_${uid2}` : `${uid2}_${uid1}`;
   };
 
-  // Fetch messages with proper cleanup
   useEffect(() => {
     if (!selectedFriend) {
       setMessages([]);
@@ -37,7 +36,7 @@ function ChatInterface({ user }) {
     return () => unsubscribe();
   }, [selectedFriend, user.uid]);
 
-  // Fetch online friends with proper cleanup
+  
   useEffect(() => {
     const usersRef = ref(db, 'users');
 
@@ -52,12 +51,12 @@ function ChatInterface({ user }) {
     return () => unsubscribe();
   }, [user.uid]);
 
-  // Auto-scroll on new messages
+  
   useEffect(() => {
     chatRef.current?.scrollTo(0, chatRef.current.scrollHeight);
   }, [messages]);
 
-  // Send message function with send lock and debug logs
+  
   const sendMessage = async () => {
     if (sending) {
       console.log('Already sending message, ignoring duplicate call.');
@@ -127,9 +126,9 @@ function ChatInterface({ user }) {
         </div>
       </div>
 
-      {/* Chat Area */}
+      {}
       <div className="flex-1 flex flex-col">
-        {/* Chat Header */}
+        {}
         <div className="p-4 border-b flex justify-between items-center">
           <h2 className="font-bold">
             {selectedFriend ? selectedFriend.petName || selectedFriend.displayName : 'Select a friend'}
@@ -142,7 +141,7 @@ function ChatInterface({ user }) {
           </button>
         </div>
 
-        {/* Messages */}
+        {}
         <div
           ref={chatRef}
           className="flex-1 overflow-y-auto p-4"
