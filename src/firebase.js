@@ -1,10 +1,8 @@
-// firebase.js
 import { initializeApp } from "firebase/app";
 import { getDatabase, ref, set } from "firebase/database";
 import { getAuth, GoogleAuthProvider } from "firebase/auth";
 import { getStorage } from "firebase/storage";
 
-// ✅ Your Firebase config
 const firebaseConfig = {
   apiKey: "Your firebase api",
   authDomain: "Domian",
@@ -15,9 +13,7 @@ const firebaseConfig = {
   appId: "id"
 };
 
-// ✅ Initialize the app first
 const app = initializeApp(firebaseConfig);
-
 
 export const db = getDatabase(app);
 export const auth = getAuth(app);
