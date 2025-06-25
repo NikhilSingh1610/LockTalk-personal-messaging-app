@@ -9,7 +9,7 @@ export const startOrGetChat = async (currentUser, otherUser) => {
   const snapshot = await get(chatRef);
 
   if (!snapshot.exists()) {
-    // Chat doesn't exist → create it with members
+    
     await set(chatRef, {
       members: {
         [currentUser.uid]: true,
@@ -18,7 +18,7 @@ export const startOrGetChat = async (currentUser, otherUser) => {
       messages: {}
     });
 
-    // Optional: Link chat to users (so they can list their chats)
+   
     await update(ref(db), {
       [`users/${currentUser.uid}/chats/${chatId}`]: true,
       [`users/${otherUser.uid}/chats/${chatId}`]: true
